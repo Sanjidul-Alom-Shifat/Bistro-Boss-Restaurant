@@ -62,7 +62,7 @@ const NavigationBar = () => {
                         // user &&
                         <li className=''>
                             <NavLink
-                                to=''
+                                to='/menu'
                                 aria-label='OurMenu'
                                 title='OurMenu'
                                 className={({ isActive }) => (isActive ? 'active' : 'default')}
@@ -73,12 +73,12 @@ const NavigationBar = () => {
                     }
                     <li className=''>
                         <NavLink
-                            to=''
+                            to='/order/salad'
                             aria-label='OurShop'
                             title='OurShop'
                             className={({ isActive }) => (isActive ? 'active' : 'default')}
                         >
-                            Our shop
+                            Order Food
                         </NavLink>
                     </li>
                     <li>
@@ -211,7 +211,7 @@ const NavigationBar = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                to=''
+                                                to='/menu'
                                                 aria-label='OurMenu'
                                                 title='OurMenu'
                                                 className='font-medium text-lg tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
@@ -221,12 +221,12 @@ const NavigationBar = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                to=''
+                                                to='/order/salad'
                                                 aria-label='OurShop'
                                                 title='OurShop'
                                                 className='font-medium text-lg tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                                             >
-                                                Our Shop
+                                                Order Food
                                             </Link>
                                         </li>
                                         <li>

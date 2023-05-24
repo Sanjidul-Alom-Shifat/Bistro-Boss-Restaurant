@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import { FaQuoteLeft } from "react-icons/fa";
 
 // Import Swiper styles
 import "swiper/css";
@@ -13,13 +14,13 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('reviews.json')
+        fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
 
     return (
-        <section className="my-20">
+        <section className="my-20 mx-4 md:mx-5 lg:mx-16">
             <SectionTitle
                 subHeading="What Our Client Say"
                 heading={'Testimonials'}
@@ -37,6 +38,7 @@ const Testimonials = () => {
                                 value={review.rating}
                                 readOnly
                             />
+                            <FaQuoteLeft  className="mt-6 h-14 w-14"/>
                             <p className="py-8 text-justify">{review.details}</p>
                             <h3 className="text-2xl text-orange-400">{review.name}</h3>
                         </div>
