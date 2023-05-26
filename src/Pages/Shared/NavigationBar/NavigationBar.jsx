@@ -1,10 +1,33 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
+import { toast } from 'react-hot-toast';
 
 const NavigationBar = () => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const { user, LogOutUser } = useContext(AuthContext);
+    console.log(user)
+
+    const handlelogout = () => {
+        LogOutUser()
+            .then(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'User log out successfully.',
+                    showConfirmButton: true,
+                    // timer: 1500
+                });
+            })
+            .catch((error) => {
+                console.log(error.message);
+                toast.error(error.message);
+        })
+    }
 
 
     return (
@@ -95,29 +118,29 @@ const NavigationBar = () => {
 
                 <div className='hidden space-x-8 lg:flex items-center'>
                     {
-                        // user &&
+                        user &&
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
-                                    // src={user?.photoURL}
+                                    src={user?.photoURL}
                                     alt=""
-                                    // title={user?.displayName}
+                                    title={user?.displayName}
                                     className="avatar-img"
                                 />
                             </div>
                         </label>
                     }
                     {
-                        // user ?
-                        //     <button onClick={HandleLogOut} className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
-                        //         Log Out
-                        //     </button>
-                        //     :
-                        <Link to='/login'>
-                            <button className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
-                                Login
+                        user ?
+                            <button onClick={handlelogout} className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
+                                Log Out
                             </button>
-                        </Link>
+                            :
+                            <Link to='/login'>
+                                <button className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
+                                    Login
+                                </button>
+                            </Link>
                     }
                 </div>
                 <div className='lg:hidden'>
@@ -242,22 +265,21 @@ const NavigationBar = () => {
 
                                         <li>
                                             {
-                                                // user &&
+                                                user &&
                                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                                     <div className="w-10 rounded-full">
-                                                        {/* <img src={user.photoURL} /> */}
-                                                        <img />
+                                                        <img src={user?.photoURL} title={user?.displayName}/>
                                                     </div>
                                                 </label>
                                             }
                                         </li>
                                         <li>
                                             {
-                                                // user ?
-                                                // <button onClick={HandleLogOut} className="bg-gradient-to-r from-emerald-400 to-emerald-700 text-lg rounded-md px-4 py-2 text-white font-semibold">
-                                                //     Log Out
-                                                // </button>
-                                                // :
+                                                user ?
+                                                <button  className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
+                                                    Log Out
+                                                </button>
+                                                :
                                                 <Link to='/login'>
                                                     <button className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
                                                         Login

@@ -27,6 +27,11 @@
         @apply py-3 text-black text-lg font-semibold
     }
 
+    .button1{
+        @apply w-full bg-gradient-to-r from-orange-200 to-amber-200 rounded-md;
+        @apply py-3 text-black text-lg font-semibold
+    }
+
     .button:hover{
         @apply bg-gradient-to-r from-orange-50 to-amber-100 border-orange-500;
         @apply text-gray-700 border;
