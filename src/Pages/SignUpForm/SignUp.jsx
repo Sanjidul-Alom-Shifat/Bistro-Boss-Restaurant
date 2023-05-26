@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
 
-    const { CreateUser, UpdateUserData } = useContext(AuthContext);
+    const { CreateUser, UpdateUserData, LogOutUser } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
@@ -38,7 +38,17 @@ const SignUp = () => {
                             // timer: 1500
                         });
                         // navigate('/');
-                        navigate(from, { replace: true });
+                        LogOutUser()
+                            .then(() => {
+                                // Sign-out successful.
+                                // toast.success('Log Out Successfully');
+                                navigate('/login')
+                            })
+                            .catch((error) => {
+                                // An error happened.
+                                toast.error(error.message);
+                            });
+                        // navigate(from, { replace: true });
 
                     })
                     .catch((error) => {
