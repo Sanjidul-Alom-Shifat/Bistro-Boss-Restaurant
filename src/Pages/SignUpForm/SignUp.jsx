@@ -12,8 +12,8 @@ const SignUp = () => {
     const { CreateUser, UpdateUserData, LogOutUser } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    // const location = useLocation();
+    // const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
 
     const handleShowPassword = () => {

@@ -10,7 +10,7 @@
     }
 
     .default{
-        @apply font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-cyan-600
+        @apply font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-orange-400
     }
     .input_group{
         @apply flex border rounded-xl;

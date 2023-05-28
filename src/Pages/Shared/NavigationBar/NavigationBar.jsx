@@ -4,6 +4,8 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast } from 'react-hot-toast';
+import { FaShoppingCart } from 'react-icons/fa';
+import UseCart from '../../../Hook/UseCart';
 
 const NavigationBar = () => {
 
@@ -11,6 +13,8 @@ const NavigationBar = () => {
 
     const { user, LogOutUser } = useContext(AuthContext);
     console.log(user)
+
+    const { cart } = UseCart();
 
     const handlelogout = () => {
         LogOutUser()
@@ -26,8 +30,9 @@ const NavigationBar = () => {
             .catch((error) => {
                 console.log(error.message);
                 toast.error(error.message);
-        })
+            })
     }
+    
 
 
     return (
@@ -99,10 +104,19 @@ const NavigationBar = () => {
                             to='/order/salad'
                             aria-label='OurShop'
                             title='OurShop'
-                            className={({ isActive }) => (isActive ? 'active' : 'default')}
+                            className={({ isActive }) => (isActive ? 'active' : 'default') }
                         >
                             Order Food
                         </NavLink>
+                    </li>
+                    {/* shopping cart icon */}
+                    <li className=''>
+                        <Link to='/' aria-label='Cart' title='Cart'>
+                            <div className='relative py-3'>
+                                <FaShoppingCart className='h-5 w-5 text-amber-500' />
+                                <p className='absolute text-sm bottom-5 left-6'>+{ cart?.length || 0 }</p>
+                            </div>
+                        </Link>
                     </li>
                     <li>
                         <NavLink
@@ -253,6 +267,14 @@ const NavigationBar = () => {
                                             </Link>
                                         </li>
                                         <li>
+                                            <Link to='/' aria-label='Cart' title='Cart'>
+                                                <div className='relative py-2'>
+                                                    <FaShoppingCart className='h-5 w-5 text-cyan-400' />
+                                                    <p className='absolute bottom-5 left-6'>11</p>
+                                                </div>
+                                            </Link>
+                                        </li>
+                                        <li>
                                             <Link
                                                 to=''
                                                 aria-label='Blog'
@@ -268,7 +290,7 @@ const NavigationBar = () => {
                                                 user &&
                                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                                     <div className="w-10 rounded-full">
-                                                        <img src={user?.photoURL} title={user?.displayName}/>
+                                                        <img src={user?.photoURL} title={user?.displayName} />
                                                     </div>
                                                 </label>
                                             }
@@ -276,15 +298,15 @@ const NavigationBar = () => {
                                         <li>
                                             {
                                                 user ?
-                                                <button  className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
-                                                    Log Out
-                                                </button>
-                                                :
-                                                <Link to='/login'>
                                                     <button className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
-                                                        Login
+                                                        Log Out
                                                     </button>
-                                                </Link>
+                                                    :
+                                                    <Link to='/login'>
+                                                        <button className="bg-gradient-to-r from-orange-300 to-amber-300 text-lg rounded-full px-4 py-2 text-black font-semibold">
+                                                            Login
+                                                        </button>
+                                                    </Link>
                                             }
                                         </li>
                                     </ul>
