@@ -12,9 +12,9 @@ const NavigationBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const { user, LogOutUser } = useContext(AuthContext);
-    console.log(user)
 
-    const { cart } = UseCart();
+    const [cart] = UseCart();
+
 
     const handlelogout = () => {
         LogOutUser()
@@ -32,7 +32,7 @@ const NavigationBar = () => {
                 toast.error(error.message);
             })
     }
-    
+
 
 
     return (
@@ -73,19 +73,7 @@ const NavigationBar = () => {
                             Contact Us
                         </NavLink>
                     </li>
-                    {
-                        // user &&
-                        <li className=''>
-                            <NavLink
-                                to=''
-                                aria-label='DashBoard'
-                                title='DashBoard'
-                                className={({ isActive }) => (isActive ? 'active' : 'default')}
-                            >
-                                DashBoard
-                            </NavLink>
-                        </li>
-                    }
+                    
                     {
                         // user &&
                         <li className=''>
@@ -104,30 +92,21 @@ const NavigationBar = () => {
                             to='/order/salad'
                             aria-label='OurShop'
                             title='OurShop'
-                            className={({ isActive }) => (isActive ? 'active' : 'default') }
+                            className={({ isActive }) => (isActive ? 'active' : 'default')}
                         >
                             Order Food
                         </NavLink>
                     </li>
                     {/* shopping cart icon */}
                     <li className=''>
-                        <Link to='/' aria-label='Cart' title='Cart'>
+                        <Link to='/dashboard/mycart' aria-label='Cart' title='Cart'>
                             <div className='relative py-3'>
                                 <FaShoppingCart className='h-5 w-5 text-amber-500' />
-                                <p className='absolute text-sm bottom-5 left-6'>+{ cart?.length || 0 }</p>
+                                <p className='absolute text-sm bottom-5 left-6'>+{cart?.length || 0}</p>
                             </div>
                         </Link>
                     </li>
-                    <li>
-                        <NavLink
-                            to=''
-                            aria-label='Blog'
-                            title='Blog'
-                            className={({ isActive }) => (isActive ? 'active' : 'default')}
-                        >
-                            Blog
-                        </NavLink>
-                    </li>
+                    
                 </ul>
 
                 <div className='hidden space-x-8 lg:flex items-center'>
@@ -238,16 +217,6 @@ const NavigationBar = () => {
                                         </li>
                                         <li>
                                             <Link
-                                                to=''
-                                                aria-label='DashBoard'
-                                                title='DashBoard'
-                                                className='font-medium text-lg tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                DashBoard
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
                                                 to='/menu'
                                                 aria-label='OurMenu'
                                                 title='OurMenu'
@@ -267,24 +236,14 @@ const NavigationBar = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to='/' aria-label='Cart' title='Cart'>
-                                                <div className='relative py-2'>
-                                                    <FaShoppingCart className='h-5 w-5 text-cyan-400' />
-                                                    <p className='absolute bottom-5 left-6'>11</p>
+                                            <Link to='/dashboard/mycart' aria-label='Cart' title='Cart'>
+                                                <div className='relative py-3'>
+                                                    <FaShoppingCart className='h-5 w-5 text-amber-500' />
+                                                    <p className='absolute text-sm bottom-5 left-6'>+{cart?.length || 0}</p>
                                                 </div>
                                             </Link>
                                         </li>
-                                        <li>
-                                            <Link
-                                                to=''
-                                                aria-label='Blog'
-                                                title='Blog'
-                                                className='font-medium text-lg tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
-                                            >
-                                                Blog
-                                            </Link>
-                                        </li>
-
+                                        
                                         <li>
                                             {
                                                 user &&
