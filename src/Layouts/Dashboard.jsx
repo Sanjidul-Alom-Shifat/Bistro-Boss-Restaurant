@@ -4,13 +4,14 @@ import { FaBars, FaHome, FaEnvelope, FaCalendarAlt, FaCcVisa, FaShoppingCart, Fa
 // import { HiAnnotation } from "react-icons/hi";
 import { NavLink, Outlet } from 'react-router-dom';
 import UseCart from '../Hook/UseCart';
+import useAdmin from '../Hook/useAdmin';
 
 const Dashboard = () => {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [cart] = UseCart();
     // console.log(cart);
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     const handleToggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);

@@ -4,13 +4,19 @@ import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import { useQuery } from '@tanstack/react-query';
 import { FaTrashAlt, FaUserSecret, FaUserShield } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../Hook/useAxiosSecure';
 
 const AllUsers = () => {
 
+    const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const result = await fetch('http://localhost:5000/users');
-        return result.json();
+        const res = await axiosSecure.get('/users')
+        return res.data;
     })
+    // const { data: users = [], refetch } = useQuery(['users'], async () => {
+    //     const result = await fetch('http://localhost:5000/users');
+    //     return result.json();
+    // })
 
     // make user admin
     const HandleMakeAdmin = (user) => {
