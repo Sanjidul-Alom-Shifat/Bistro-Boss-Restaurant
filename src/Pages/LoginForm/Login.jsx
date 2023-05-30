@@ -76,14 +76,30 @@ const Login = () => {
                 const loggerUser = result.user
                 console.log(loggerUser);
                 // toast.success("User Sign in successfully by google");
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'User successfully login by google.',
-                    showConfirmButton: true,
-                    // timer: 1500
-                });
-                navigate(from, { replace: true });
+                const savedUser = {
+                    name: loggerUser.displayName,
+                    email: loggerUser.email,
+                    photoURL: loggerUser.photoURL
+                };
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                    .then((response) => response.json())
+                    .then(() => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'User successfully login by google.',
+                            showConfirmButton: true,
+                            // timer: 1500
+                        });
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(error => {
                 const ErrorMessage = error.message;

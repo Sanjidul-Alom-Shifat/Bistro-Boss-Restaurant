@@ -9,10 +9,13 @@ const MenuCategory = ({ items, title, img, button }) => {
             {title && <Cover img={img} title={title}></Cover>}
             <div className="grid md:grid-cols-2 gap-10 my-12 mx-4 md:mx-5 lg:mx-16">
                 {
-                    items.map(item => <MenuItem
-                        key={item._id}
-                        item={item}
-                    ></MenuItem>)
+                    items.map(item =>
+                        <MenuItem
+                            key={item._id}
+                            item={item}
+                        >
+                        </MenuItem>
+                    )
                 }
             </div>
             <div className='text-center'>

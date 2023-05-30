@@ -28,28 +28,46 @@ const SignUp = () => {
                 console.log(loggedUser);
                 UpdateUserData(data.name, data.photoURL)
                     .then(() => {
-                        console.log('user profile info updated')
-                        reset();
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'User created successfully.',
-                            showConfirmButton: true,
-                            // timer: 1500
-                        });
-                        // navigate('/');
-                        LogOutUser()
-                            .then(() => {
-                                // Sign-out successful.
-                                // toast.success('Log Out Successfully');
-                                navigate('/login')
-                            })
-                            .catch((error) => {
-                                // An error happened.
-                                toast.error(error.message);
-                            });
-                        // navigate(from, { replace: true });
 
+                        const savedUser = {
+                            name: data.name,
+                            email: data.email,
+                            photoURL: data.photoURL
+                        }
+
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(savedUser)
+                        })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                if (data.insertedId) {
+                                    console.log('user profile info updated')
+                                    reset();
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: true,
+                                        // timer: 1500
+                                    });
+                                    // navigate('/');
+                                    LogOutUser()
+                                        .then(() => {
+                                            // Sign-out successful.
+                                            // toast.success('Log Out Successfully');
+                                            navigate('/login')
+                                        })
+                                        .catch((error) => {
+                                            // An error happened.
+                                            toast.error(error.message);
+                                        });
+                                    // navigate(from, { replace: true });
+                                }
+                            })
                     })
                     .catch((error) => {
                         console.log(error);
