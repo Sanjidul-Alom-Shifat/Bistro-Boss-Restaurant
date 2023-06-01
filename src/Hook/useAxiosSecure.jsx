@@ -5,11 +5,11 @@ import useAuth from './useAuth';
 
 
 const useAxiosSecure = () => {
-  const { logOut } = useAuth(); 
-  const navigate = useNavigate(); 
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
 
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000', 
+    baseURL: 'http://localhost:5000',
   });
 
   useEffect(() => {
