@@ -22,6 +22,11 @@
         @apply focus:outline-none border-none
     }
 
+    .input_form{
+        @apply w-full py-4 border rounded-xl bg-slate-50;
+        @apply focus:outline-none border-none
+    }
+
     .button{
         @apply w-full bg-gradient-to-r from-orange-300 to-amber-300 rounded-md;
         @apply py-3 text-black text-lg font-semibold

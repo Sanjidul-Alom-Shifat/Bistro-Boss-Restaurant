@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import logo from '../assets/logo.png';
-import { FaBars, FaHome, FaEnvelope, FaCalendarAlt, FaCcVisa, FaShoppingCart, FaSwatchbook, FaStreetView, FaAddressCard, FaUtensils, FaWallet, FaBook, FaUsers } from "react-icons/fa";
+import { FaBars, FaHome, FaEnvelope, FaCalendarAlt, FaCcVisa, FaShoppingCart, FaSwatchbook, FaAddressCard, FaUtensils, FaWallet, FaBook, FaUsers } from "react-icons/fa";
 // import { HiAnnotation } from "react-icons/hi";
 import { NavLink, Outlet } from 'react-router-dom';
 import UseCart from '../Hook/UseCart';
@@ -139,10 +139,10 @@ const Dashboard = () => {
                                         </a>
                                     </li>
                                     <li onClick={handleCloseDashboard}>
-                                        <div href="#" className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
+                                        <a href="#" className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                                             <FaSwatchbook className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></FaSwatchbook>
                                             <span className="flex-1 ml-3 whitespace-nowrap">My Booking</span>
-                                        </div>
+                                        </a>
                                     </li>
                                 </>
                         }
