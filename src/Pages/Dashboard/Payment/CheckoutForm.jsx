@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
+import { toast } from "react-hot-toast";
 // import './CheckoutForm.css';
 
 
@@ -97,6 +98,7 @@ const CheckoutForm = ({ price, cart }) => {
                     console.log(res.data);
                     if (res.data.result.insertedId) {
                         // display confirm
+                        // toast.success('payment successfully');
                     }
                 })
         }

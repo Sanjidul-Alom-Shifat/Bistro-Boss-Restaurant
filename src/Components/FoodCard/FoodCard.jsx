@@ -3,6 +3,10 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import UseCart from "../../Hook/UseCart";
+// import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+// import 'sweetalert2/src/sweetalert2.scss'
+
 
 
 const FoodCard = ({ item }) => {
@@ -58,7 +62,7 @@ const FoodCard = ({ item }) => {
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Login Now'
+                confirmButtonText: 'Login Now',
             }).then((result) => {
                 if (result.isConfirmed) {
                     navigate('/login', { state: { from: location } });

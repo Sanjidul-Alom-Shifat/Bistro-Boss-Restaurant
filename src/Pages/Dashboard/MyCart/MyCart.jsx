@@ -44,6 +44,8 @@ const MyCart = () => {
         })
     };
 
+
+
     return (
         <div className="">
             <Helmet>
@@ -101,7 +103,6 @@ const MyCart = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
     );
 };
