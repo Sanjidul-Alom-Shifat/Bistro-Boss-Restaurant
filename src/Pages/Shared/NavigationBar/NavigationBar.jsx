@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { toast } from 'react-hot-toast';
 import { FaShoppingCart } from 'react-icons/fa';
 import UseCart from '../../../Hook/UseCart';
+import useAdmin from '../../../Hook/useAdmin';
 
 const NavigationBar = () => {
 
@@ -14,6 +15,8 @@ const NavigationBar = () => {
     const { user, LogOutUser } = useContext(AuthContext);
 
     const [cart] = UseCart();
+
+    const [isAdmin] = useAdmin();
 
 
     const handlelogout = () => {
@@ -73,7 +76,32 @@ const NavigationBar = () => {
                             Contact Us
                         </NavLink>
                     </li>
-                    
+                    {
+                        isAdmin
+                            ?
+                            <li className=''>
+                                <NavLink
+                                    to='/dashboard/adminhome'
+                                    aria-label='Dashboard'
+                                    title='Dashboard'
+                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                >
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            :
+                            <li className=''>
+                                <NavLink
+                                    to='/dashboard/userhome'
+                                    aria-label='Dashboard'
+                                    title='Dashboard'
+                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                >
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                    }
+
                     {
                         // user &&
                         <li className=''>
@@ -106,7 +134,7 @@ const NavigationBar = () => {
                             </div>
                         </Link>
                     </li>
-                    
+
                 </ul>
 
                 <div className='hidden space-x-8 lg:flex items-center'>
@@ -216,6 +244,29 @@ const NavigationBar = () => {
                                             </Link>
                                         </li>
                                         <li>
+                                            {
+                                                isAdmin
+                                                    ?
+                                                    <Link
+                                                        to='/dashboard/adminhome'
+                                                        aria-label='Dashboard'
+                                                        title='Dashboard'
+                                                        className='font-medium text-lg tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                    >
+                                                        Dashboard
+                                                    </Link>
+                                                    :
+                                                    <Link
+                                                        to='/dashboard/userhome'
+                                                        aria-label='Dashboard'
+                                                        title='Dashboard'
+                                                        className='font-medium text-lg tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                                                    >
+                                                        Dashboard
+                                                    </Link>
+                                            }
+                                        </li>
+                                        <li>
                                             <Link
                                                 to='/menu'
                                                 aria-label='OurMenu'
@@ -243,7 +294,7 @@ const NavigationBar = () => {
                                                 </div>
                                             </Link>
                                         </li>
-                                        
+
                                         <li>
                                             {
                                                 user &&
