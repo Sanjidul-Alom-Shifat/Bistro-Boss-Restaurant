@@ -14,13 +14,13 @@ const AllUsers = () => {
         return res.data;
     })
     // const { data: users = [], refetch } = useQuery(['users'], async () => {
-    //     const result = await fetch('http://localhost:5000/users');
+    //     const result = await fetch('https://bistro-boss-server-side.vercel.app/users');
     //     return result.json();
     // })
 
     // make user admin
     const HandleMakeAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://bistro-boss-server-side.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH',
         })
             .then((response) => response.json())

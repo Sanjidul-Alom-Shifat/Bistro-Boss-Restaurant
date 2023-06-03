@@ -82,7 +82,7 @@ const Login = () => {
                     photoURL: loggerUser.photoURL
                 };
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://bistro-boss-server-side.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

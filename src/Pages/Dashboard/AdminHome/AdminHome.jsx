@@ -3,8 +3,9 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
 import useAuth from "../../../Hook/useAuth";
-import { FaWallet, FaPeopleCarry } from "react-icons/fa";
+import { FaWallet, FaPeopleCarry, FaShippingFast, FaProductHunt } from "react-icons/fa";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie, ResponsiveContainer, Legend } from 'recharts';
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -63,6 +64,10 @@ const AdminHome = () => {
     return (
         <div>
 
+            <Helmet>
+                <title>Bistro Boss | Admin Home</title>
+            </Helmet>
+
             <section
                 className="grid grid-cols-1  mx-auto  items-center  "
             >
@@ -73,7 +78,7 @@ const AdminHome = () => {
                     <div
                         className=" mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 mb-5"
                     >
-                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-indigo-500 via-purple-500 to-pink-500 font-semibold rounded-lg shadow-md p-6">
+                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-fuchsia-500 via-fuchsia-400 to-fuchsia-200 font-semibold rounded-lg shadow-md p-6">
                             <FaWallet className="w-9 h-9 text-white"></FaWallet>
                             <div className="">
                                 <p className="text-white text-3xl">
@@ -82,7 +87,7 @@ const AdminHome = () => {
                                 <h3 className="text-2xl font-semibold text-white">Revenue</h3>
                             </div>
                         </div>
-                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-indigo-500 via-purple-500 to-pink-500 font-semibold rounded-lg shadow-md p-6">
+                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-emerald-500 via-emerald-500 to-emerald-500 font-semibold rounded-lg shadow-md p-6">
                             <FaPeopleCarry className="w-9 h-9 text-white"></FaPeopleCarry>
                             <div className="">
                                 <p className="text-white text-3xl">
@@ -91,8 +96,8 @@ const AdminHome = () => {
                                 <h3 className="text-2xl font-semibold text-white">Customers</h3>
                             </div>
                         </div>
-                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-indigo-500 via-purple-500 to-pink-500 font-semibold rounded-lg shadow-md p-6">
-                            <FaWallet className="w-9 h-9 text-white"></FaWallet>
+                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-pink-500 via-pink-400 to-pink-200 font-semibold rounded-lg shadow-md p-6">
+                            <FaProductHunt className="w-9 h-9 text-white"></FaProductHunt>
                             <div className="">
                                 <p className="text-white text-3xl">
                                     <span id="deposit-total">{stats.products}</span>
@@ -100,8 +105,8 @@ const AdminHome = () => {
                                 <h3 className="text-2xl font-semibold text-white">Products</h3>
                             </div>
                         </div>
-                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-indigo-500 via-purple-500 to-pink-500 font-semibold rounded-lg shadow-md p-6">
-                            <FaWallet className="w-9 h-9 text-white"></FaWallet>
+                        <div className=" flex items-center gap-7 justify-center  bg-gradient-to-r  from-cyan-500 via-cyan-400 to-cyan-200 font-semibold rounded-lg shadow-md p-6">
+                            <FaShippingFast className="w-9 h-9 text-white"></FaShippingFast>
                             <div className="">
                                 <p className="text-white text-3xl">
                                     <span id="deposit-total">{stats.orders}</span>
@@ -114,10 +119,10 @@ const AdminHome = () => {
 
                 </div>
             </section>
-            <div className="block lg:flex">
-                <div className="w-1/2 ">
+            <div className="block lg:flex mt-5  mb-9">
+                <div className="w-1/2 justify-center ">
                     <BarChart
-                        width={500}
+                        width={350}
                         height={300}
                         data={chartData}
                         margin={{
@@ -137,9 +142,9 @@ const AdminHome = () => {
                         </Bar>
                     </BarChart>
                 </div>
-                <div className="w-1/2">
+                <div className="w-full -mt-5 lg:-mt-0">
                     <ResponsiveContainer width="100%" height="100%">
-                        <PieChart width={400} height={400}>
+                        <PieChart width={500} height={300}>
                             <Legend></Legend>
                             <Pie
                                 data={chartData}

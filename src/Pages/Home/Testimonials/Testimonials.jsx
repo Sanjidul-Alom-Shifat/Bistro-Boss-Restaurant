@@ -14,7 +14,7 @@ const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://bistro-boss-server-side.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -38,7 +38,7 @@ const Testimonials = () => {
                                 value={review.rating}
                                 readOnly
                             />
-                            <FaQuoteLeft  className="mt-6 h-14 w-14"/>
+                            <FaQuoteLeft className="mt-6 h-14 w-14" />
                             <p className="py-8 text-justify">{review.details}</p>
                             <h3 className="text-2xl text-orange-400">{review.name}</h3>
                         </div>
